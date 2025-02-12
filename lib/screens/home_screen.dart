@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:islamic_hijri_calendar/islamic_hijri_calendar.dart';
 
 import '../widget/compass_widget.dart';
 import '../widget/helper_widget.dart';
@@ -92,7 +92,29 @@ class _QiblaScreenState extends State<QiblaScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Qibla Locator")),
+      appBar: AppBar(title: const Text("Qibla Locator"),
+      actions: [
+        IconButton(onPressed: (){
+          showDialog(context: context, builder: (context){
+            return AlertDialog(
+              content: IslamicHijriCalendar(
+                isHijriView: true,
+
+                adjustmentValue: 0,
+                isGoogleFont: true,
+
+                fontFamilyName: "Lato",
+                getSelectedHijriDate: (selectedDate) {
+
+                  print("Selected Hijri Date: $selectedDate");
+                },
+                isDisablePreviousNextMonthDates: true,
+              ),
+            );
+          });
+        }, icon: Icon(Icons.calendar_month))
+        ],
+      ),
       body: FadeTransition(
         opacity: _fadeAnimation,
         child: FutureBuilder<bool?>(

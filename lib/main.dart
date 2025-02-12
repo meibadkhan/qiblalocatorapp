@@ -1,12 +1,6 @@
-import 'dart:async';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_qiblah/flutter_qiblah.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:geolocator/geolocator.dart';
-
-import 'screens/home_screen.dart';
+import 'package:islamic_hijri_calendar/islamic_hijri_calendar.dart';
+import 'package:qiblalocatorapp/screens/home_screen.dart';
 
 void main() => runApp(MyApp());
 
